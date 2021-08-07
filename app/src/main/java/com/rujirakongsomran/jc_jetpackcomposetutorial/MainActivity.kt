@@ -17,11 +17,16 @@ class MainActivity : ComponentActivity() {
             JC_JetpackComposeTutorialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    MessageCard(name = "Android")
                 }
             }
         }
     }
+}
+
+@Composable
+fun MessageCard(name: String) {
+    Text(text = "Hello $name!")
 }
 
 @Composable
