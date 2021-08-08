@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,7 +26,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JC_JetpackComposeTutorialTheme {
-                MessageCard(Message("Android", "Jetpack Compose"))
+//                MessageCard(Message("Android", "Jetpack Compose"))
+                Conversation(SampleData.conversationSample)
             }
         }
     }
@@ -37,7 +40,7 @@ fun MessageCard(msg: Message) {
     // Add padding around our message
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
+            painter = painterResource(R.drawable.girl),
             contentDescription = "Contact profile picture",
             modifier = Modifier
                 // Set image size to 40 dp
@@ -85,15 +88,20 @@ fun PreviewMessageCard() {
     }
 }
 
-//@Composable
-//fun Greeting(name: String) {
-//    Text(text = "Hello $name!")
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    JC_JetpackComposeTutorialTheme {
-//        Greeting("Android")
-//    }
-//}
+@Composable
+fun Conversation(messages: List<Message>) {
+    LazyColumn {
+        items(messages) { message ->
+            MessageCard(message)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewConversation() {
+    JC_JetpackComposeTutorialTheme {
+        Conversation(SampleData.conversationSample)
+    }
+}
+
