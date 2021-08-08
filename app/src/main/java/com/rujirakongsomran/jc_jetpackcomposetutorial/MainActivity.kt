@@ -17,35 +17,38 @@ class MainActivity : ComponentActivity() {
             JC_JetpackComposeTutorialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MessageCard("Android")
+                    MessageCard(Message("Android", "Jetpack Compose"))
                 }
             }
         }
     }
 }
 
+data class Message(val author: String, val body: String)
+
 @Composable
-fun MessageCard(name: String) {
-    Text(text = "Hello $name!")
+fun MessageCard(msg: Message) {
+    Text(text = msg.author)
+    Text(text = msg.body)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewMessageCard() {
-    JC_JetpackComposeTutorialTheme {
-        MessageCard("Biwberry")
-    }
+    MessageCard(
+        msg = Message("Colleague", "Hey, take a look at Jetpack Compose, it's great!")
+    )
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    JC_JetpackComposeTutorialTheme {
-        Greeting("Android")
-    }
-}
+//@Composable
+//fun Greeting(name: String) {
+//    Text(text = "Hello $name!")
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    JC_JetpackComposeTutorialTheme {
+//        Greeting("Android")
+//    }
+//}
