@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rujirakongsomran.jc_jetpackcomposetutorial.ui.theme.JC_JetpackComposeTutorialTheme
+import com.rujirakongsomran.jc_jetpackcomposetutorial.ui.theme.Typography
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +32,32 @@ class MainActivity : ComponentActivity() {
         setContent {
             JC_JetpackComposeTutorialTheme {
 //                MessageCard(Message("Android", "Jetpack Compose"))
-                Conversation(SampleData.conversationSample)
+//                Conversation(SampleData.conversationSample)
+                Surface(color = MaterialTheme.colors.background) {
+                    Column {
+                        Greeting(name = "Android")
+                        CustomText(mess = "Android Spread")
+                    }
+                }
             }
         }
     }
 }
 
 data class Message(val author: String, val body: String)
+
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
+
+@Composable
+fun CustomText(mess: String) {
+    Text(
+        text = mess,
+        style = Typography.h5
+    )
+}
 
 @Composable
 fun MessageCard(msg: Message) {
@@ -125,11 +145,22 @@ fun Conversation(messages: List<Message>) {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun PreviewConversation() {
     JC_JetpackComposeTutorialTheme {
         Conversation(SampleData.conversationSample)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewCustomText() {
+    JC_JetpackComposeTutorialTheme {
+        Column {
+            Greeting(name = "Android")
+            CustomText(mess = "Android Spread")
+        }
     }
 }
 
