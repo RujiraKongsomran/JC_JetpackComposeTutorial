@@ -17,6 +17,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -122,11 +123,11 @@ fun MessageCard(msg: Message) {
 
 }
 
-@Preview(
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true,
-    name = "Dark Mode"
-)
+//@Preview(
+//    uiMode = Configuration.UI_MODE_NIGHT_YES,
+//    showBackground = true,
+//    name = "Dark Mode"
+//)
 @Composable
 fun PreviewMessageCard() {
     JC_JetpackComposeTutorialTheme {
@@ -153,13 +154,83 @@ fun PreviewConversation() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun PreviewCustomText() {
     JC_JetpackComposeTutorialTheme {
         Column {
             Greeting(name = "Android")
             CustomText(mess = "Android Spread")
+        }
+    }
+}
+
+//@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    JC_JetpackComposeTutorialTheme {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.primary
+            ) {
+
+            }
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.secondary
+            ) {
+
+            }
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.primary
+            ) {
+
+            }
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.secondary
+            ) {
+
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview2() {
+    JC_JetpackComposeTutorialTheme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally, // Start, CenterHorizontally
+            verticalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.primary
+            ) {
+
+            }
+            Surface(
+                modifier = Modifier
+                    .width(200.dp)
+                    .height(50.dp),
+                color = MaterialTheme.colors.primary
+            ) {
+
+            }
         }
     }
 }
