@@ -1,6 +1,6 @@
 package com.rujirakongsomran.jc_jetpackcomposetutorial
 
-import android.content.res.Configuration
+import SampleData
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -206,6 +206,19 @@ fun DefaultPreview() {
     }
 }
 
+@Composable
+fun ColumnScope.CustomItem(
+    weight: Float,
+    color: Color = MaterialTheme.colors.primary
+) {
+    Surface(
+        modifier = Modifier
+            .width(200.dp)
+            .weight(weight),
+        color = color
+    ) {}
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
@@ -214,24 +227,11 @@ fun DefaultPreview2() {
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Surface(
-                modifier = Modifier
-                    .width(200.dp)
-                    .height(50.dp)
-                    .weight(1f),
+            CustomItem(
+                weight = 3f,
                 color = MaterialTheme.colors.secondary
-            ) {
-
-            }
-            Surface(
-                modifier = Modifier
-                    .width(200.dp)
-                    .height(50.dp)
-                    .weight(3f),
-                color = MaterialTheme.colors.primary
-            ) {
-
-            }
+            )
+            CustomItem(weight = 1f)
         }
     }
 }
