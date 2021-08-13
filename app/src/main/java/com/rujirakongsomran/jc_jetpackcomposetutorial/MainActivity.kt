@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -35,9 +36,18 @@ class MainActivity : ComponentActivity() {
 //                MessageCard(Message("Android", "Jetpack Compose"))
 //                Conversation(SampleData.conversationSample)
                 Surface(color = MaterialTheme.colors.background) {
-                    Column {
-                        Greeting(name = "Android")
-                        CustomText(mess = "Android Spread")
+                    Column(
+                        modifier = Modifier
+                            .height(500.dp)
+                            .width(500.dp)
+                            .background(Color.LightGray),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        CustomItem(
+                            weight = 3f,
+                            color = MaterialTheme.colors.secondary
+                        )
+                        CustomItem(weight = 1f)
                     }
                 }
             }
@@ -224,7 +234,7 @@ fun ColumnScope.CustomItem(
 fun DefaultPreview2() {
     JC_JetpackComposeTutorialTheme {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.height(500.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CustomItem(
