@@ -36,12 +36,12 @@ class MainActivity : ComponentActivity() {
 //                MessageCard(Message("Android", "Jetpack Compose"))
 //                Conversation(SampleData.conversationSample)
                 Surface(color = MaterialTheme.colors.background) {
-                    Column(
+                    Row(
                         modifier = Modifier
                             .height(500.dp)
                             .width(500.dp)
                             .background(Color.LightGray),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalArrangement = Arrangement.Start
                     ) {
                         CustomItem(
                             weight = 3f,
@@ -217,13 +217,14 @@ fun DefaultPreview() {
 }
 
 @Composable
-fun ColumnScope.CustomItem(
+fun RowScope.CustomItem(
     weight: Float,
     color: Color = MaterialTheme.colors.primary
 ) {
     Surface(
         modifier = Modifier
-            .width(200.dp)
+            .width(50.dp)
+            .height(50.dp)
             .weight(weight),
         color = color
     ) {}
@@ -233,9 +234,10 @@ fun ColumnScope.CustomItem(
 @Composable
 fun DefaultPreview2() {
     JC_JetpackComposeTutorialTheme {
-        Column(
-            modifier = Modifier.height(500.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             CustomItem(
                 weight = 3f,
