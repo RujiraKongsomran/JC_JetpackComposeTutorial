@@ -212,21 +212,22 @@ fun DefaultPreview2() {
     JC_JetpackComposeTutorialTheme {
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally, // Start, CenterHorizontally
-            verticalArrangement = Arrangement.SpaceEvenly
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Surface(
                 modifier = Modifier
                     .width(200.dp)
-                    .height(50.dp),
-                color = MaterialTheme.colors.primary
+                    .height(50.dp)
+                    .weight(1f),
+                color = MaterialTheme.colors.secondary
             ) {
 
             }
             Surface(
                 modifier = Modifier
                     .width(200.dp)
-                    .height(50.dp),
+                    .height(50.dp)
+                    .weight(3f),
                 color = MaterialTheme.colors.primary
             ) {
 
